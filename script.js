@@ -1,6 +1,7 @@
 $('.search-button').on('click', function () {
   $.ajax({
     url: 'http://www.omdbapi.com/?apikey=9d386d0f&s=' + $('.input-keyword').val(),
+    crossDomain : true,
     success: results => {
       // console.log(results);
       const movies = results.Search;
@@ -12,6 +13,7 @@ $('.search-button').on('click', function () {
       $('.modal-detail-button').on('click', function () {
         $.ajax({
           url: 'http://www.omdbapi.com/?apikey=9d386d0f&i=' + $(this).data('imdbid'),
+          crossDomain : true,
           success: m => {
             const movieDetail = showMovieDetail(m);
             $('.modal-body').html(movieDetail);
