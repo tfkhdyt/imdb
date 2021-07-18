@@ -1,7 +1,6 @@
 $('.search-button').on('click', function () {
   $.ajax({
     url: 'https://www.omdbapi.com/?apikey=9d386d0f&s=' + $('.input-keyword').val(),
-    crossDomain : true,
     success: results => {
       // console.log(results);
       const movies = results.Search;
@@ -13,7 +12,6 @@ $('.search-button').on('click', function () {
       $('.modal-detail-button').on('click', function () {
         $.ajax({
           url: 'https://www.omdbapi.com/?apikey=9d386d0f&i=' + $(this).data('imdbid'),
-          crossDomain : true,
           success: m => {
             const movieDetail = showMovieDetail(m);
             $('.modal-body').html(movieDetail);
@@ -54,6 +52,8 @@ let showMovieDetail = m => {
   const r = m.Ratings.map(rating => {
     return `<b>${rating.Source} : </b> ${rating.Value} <br>`;
   }).join('');
+  let paheId = m.Title;
+  paheId += (m.Type == 'movie' ? ` (${m.Year})` : '');
   return  `
     <div class="container-fluid">
       <div class="row">
@@ -84,6 +84,6 @@ let showMovieDetail = m => {
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary search-pahe" data-imdbidpahe="${m.Title}">Search on Pahe</button>
+    <button type="button" class="btn btn-primary search-pahe" data-imdbidpahe="${paheId}">Search on Pahe</button>
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>`;
 };
