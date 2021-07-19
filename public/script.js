@@ -85,5 +85,5 @@ let showMovieDetail = m => {
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-primary search-pahe" data-imdbidpahe="${paheId}"><i class="fas fa-search"></i> Search on Pahe</button>
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="far fa-times"></i> Close</button>`;
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>`;
 };
