@@ -4,6 +4,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TFKHDYT Movies</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+      font-size: 90%;
+    }
+    h2, h4, h5, h6 {
+      font-weight: bold;
+    }
+    .list-group-item {
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -17,7 +33,7 @@
         <div class="input-group mb-3">
           <input type="text" class="form-control input-keyword" placeholder="Search Movies...">
           <div class="input-group-append">
-            <button class="btn btn-primary search-button">Search</button>
+            <button class="btn btn-primary search-button"><i class="fas fa-search"></i> Search</button>
           </div>
         </div>
       </div>
@@ -32,7 +48,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="movieDetailModalLabel">Movie Details</h5>
+          <h5 class="modal-title" id="movieDetailModalLabel"><i class="fas fa-film"></i> Movie Details</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -46,9 +62,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="script.js" type="text/javascript" charset="utf-8"></script>
   <!--<script src="//cdn.jsdelivr.net/npm/eruda"></script>
-  <script>
-    eruda.init();
-  </script>-->
+    <script>
+      eruda.init();
+    </script>-->
 
 </body>
 </html>

@@ -42,7 +42,7 @@ let showCard = m => {
       <div class="card-body">
         <h5 class="card-title">${m.Title}</h5>
         <h6 class="card-subtitle mb-2 text-muted">${m.Year}</h6>
-        <a href="#" class="btn btn-primary modal-detail-button" data-bs-toggle="modal" data-bs-target="#movieDetailModal" data-imdbid="${m.imdbID}">Show Details</a>
+        <a href="#" class="btn btn-primary modal-detail-button col-12" data-bs-toggle="modal" data-bs-target="#movieDetailModal" data-imdbid="${m.imdbID}"><i class="fas fa-info-circle"></i> Show Details</a>
       </div>
     </div>
   </div>`;
@@ -62,7 +62,7 @@ let showMovieDetail = m => {
         </div>
         <div class="col-md">
           <ul class="list-group">
-            <li class="list-group-item"><h4>${m.Title} (${m.Year})</h4></li>
+            <li class="list-group-item"><h5>${m.Title} (${m.Year})</h5></li>
             <li class="list-group-item"><strong>Rated : </strong>${m.Rated}</li>
             <li class="list-group-item"><strong>Released : </strong>${m.Released}</li>
             <li class="list-group-item"><strong>Runtime : </strong>${m.Runtime}</li>
@@ -74,8 +74,8 @@ let showMovieDetail = m => {
             <li class="list-group-item"><strong>Country : </strong>${m.Country}</li>
             <li class="list-group-item"><strong>Awards : </strong>${m.Awards}</li>
             <li class="list-group-item"><strong>Ratings : </strong><br>${r}
-            <li class="list-group-item"><strong>Box Office : </strong><br>${m.BoxOffice}
-            <li class="list-group-item"><strong>Production : </strong><br>${m.Production}
+            <li class="list-group-item"><strong>Box Office : </strong>${m.BoxOffice}
+            <li class="list-group-item"><strong>Production : </strong>${m.Production}
             </li>
             <li class="list-group-item"><strong>Plot : </strong><br>${m.Plot}</li>
           </ul>
@@ -84,6 +84,6 @@ let showMovieDetail = m => {
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary search-pahe" data-imdbidpahe="${paheId}">Search on Pahe</button>
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>`;
+    <button type="button" class="btn btn-primary search-pahe" data-imdbidpahe="${paheId}"><i class="fas fa-search"></i> Search on Pahe</button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="far fa-times"></i> Close</button>`;
 };
