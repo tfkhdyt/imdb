@@ -2,7 +2,6 @@ const searchButton = document.querySelector('.search-button');
 searchButton.addEventListener('click', async function () {
   let inputKeyword = document.querySelector('.input-keyword');
   inputKeyword = encodeURIComponent(inputKeyword.value);
-  console.log(inputKeyword)
   const movies = await getMovies(inputKeyword);
   updateUI(movies);
 });
@@ -21,7 +20,7 @@ document.addEventListener('click', async function (e) {
     if (movieDetail.Ratings.length == 0) {
       const listGroupItem = document.querySelectorAll('.list-group-item');
       listGroupItem.forEach(e => {
-        if (e.textContent.includes('Ratings')) {
+        if (e.id == 'ratings') {
           e.classList.add('d-none');
         }
       });
@@ -105,7 +104,7 @@ const showMovieDetail = m => {
           <li class="list-group-item"><strong>Language : </strong>${m.Language}</li>
           <li class="list-group-item"><strong>Country : </strong>${m.Country}</li>
           <li class="list-group-item"><strong>Awards : </strong>${m.Awards}</li>
-          <li class="list-group-item"><strong>Ratings : </strong><br>${r}
+          <li class="list-group-item" id="ratings">${r}
           <li class="list-group-item"><strong>Box Office : </strong>${m.BoxOffice}
           <li class="list-group-item"><strong>Production : </strong>${m.Production}
           </li>
