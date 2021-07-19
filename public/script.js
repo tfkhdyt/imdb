@@ -50,7 +50,9 @@ const linkToPahe = () => {
 const updateUIDetail = m => {
   const movieDetail = showMovieDetail(m);
   const modalBody = document.querySelector('.modal-body');
+  const modalFooter = document.querySelector('.modal-footer');
   modalBody.innerHTML = movieDetail;
+  modalFooter.innerHTML = showModalFooter(m);
 };
 
 const getMovies = keyword => {
@@ -84,38 +86,39 @@ const showMovieDetail = m => {
   const r = m.Ratings.map(rating => {
     return `<b>${rating.Source} : </b> ${rating.Value} <br>`;
   }).join('');
-  let paheId = m.Title;
-  paheId += (m.Type == 'movie' ? ` (${m.Year})`: '');
   return  `
   <div class="container-fluid">
-  <div class="row">
-  <div class="col-md-3">
-  <img src="${m.Poster}" class="img-fluid">
-  </div>
-  <div class="col-md">
-  <ul class="list-group">
-  <li class="list-group-item"><h5>${m.Title} (${m.Year})</h5></li>
-  <li class="list-group-item"><strong>Rated : </strong>${m.Rated}</li>
-  <li class="list-group-item"><strong>Released : </strong>${m.Released}</li>
-  <li class="list-group-item"><strong>Runtime : </strong>${m.Runtime}</li>
-  <li class="list-group-item"><strong>Genre : </strong>${m.Genre}</li>
-  <li class="list-group-item"><strong>Director : </strong>${m.Director}</li>
-  <li class="list-group-item"><strong>Actor : </strong>${m.Actors}</li>
-  <li class="list-group-item"><strong>Writer : </strong>${m.Writer}</li>
-  <li class="list-group-item"><strong>Language : </strong>${m.Language}</li>
-  <li class="list-group-item"><strong>Country : </strong>${m.Country}</li>
-  <li class="list-group-item"><strong>Awards : </strong>${m.Awards}</li>
-  <li class="list-group-item"><strong>Ratings : </strong><br>${r}
-  <li class="list-group-item"><strong>Box Office : </strong>${m.BoxOffice}
-  <li class="list-group-item"><strong>Production : </strong>${m.Production}
-  </li>
-  <li class="list-group-item"><strong>Plot : </strong><br>${m.Plot}</li>
-  </ul>
-  </div>
-  </div>
-  </div>
-  </div>
-  <div class="modal-footer">
-  <button type="button" class="btn btn-primary search-pahe" data-imdbidpahe="${m.imdbID}"><i class="fas fa-search"></i> Search on Pahe</button>
-  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>`;
+    <div class="row">
+      <div class="col-md-3">
+        <img src="${m.Poster}" class="img-fluid">
+      </div>
+      <div class="col-md">
+        <ul class="list-group">
+          <li class="list-group-item"><h5>${m.Title} (${m.Year})</h5></li>
+          <li class="list-group-item"><strong>Rated : </strong>${m.Rated}</li>
+          <li class="list-group-item"><strong>Released : </strong>${m.Released}</li>
+          <li class="list-group-item"><strong>Runtime : </strong>${m.Runtime}</li>
+          <li class="list-group-item"><strong>Genre : </strong>${m.Genre}</li>
+          <li class="list-group-item"><strong>Director : </strong>${m.Director}</li>
+          <li class="list-group-item"><strong>Actor : </strong>${m.Actors}</li>
+          <li class="list-group-item"><strong>Writer : </strong>${m.Writer}</li>
+          <li class="list-group-item"><strong>Language : </strong>${m.Language}</li>
+          <li class="list-group-item"><strong>Country : </strong>${m.Country}</li>
+          <li class="list-group-item"><strong>Awards : </strong>${m.Awards}</li>
+          <li class="list-group-item"><strong>Ratings : </strong><br>${r}
+          <li class="list-group-item"><strong>Box Office : </strong>${m.BoxOffice}
+          <li class="list-group-item"><strong>Production : </strong>${m.Production}
+          </li>
+          <li class="list-group-item"><strong>Plot : </strong><br>${m.Plot}</li>
+        </ul>
+      </div>
+    </div>
+  </div>`;
+};
+
+const showModalFooter = m => {
+  return `
+    <button type="button" class="btn btn-primary search-pahe" data-imdbidpahe="${m.imdbID}"><i class="fas fa-search"></i> Search on Pahe</button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
+  `
 };
