@@ -1,7 +1,9 @@
 const searchButton = document.querySelector('.search-button');
 searchButton.addEventListener('click', async function () {
-  const inputKeyword = document.querySelector('.input-keyword');
-  const movies = await getMovies(inputKeyword.value);
+  let inputKeyword = document.querySelector('.input-keyword');
+  inputKeyword = encodeURIComponent(inputKeyword.value);
+  console.log(inputKeyword)
+  const movies = await getMovies(inputKeyword);
   updateUI(movies);
 });
 
