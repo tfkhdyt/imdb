@@ -11,15 +11,18 @@ document.addEventListener('click', async function (e) {
     const imdbid = e.target.dataset.imdbid;
     const movieDetail = await getMovieDetail(imdbid);
     updateUIDetail(movieDetail);
-    const listGroupItem = document. querySelectorAll('.list-group-item');
-    listGroupItem.forEach(item => {
-      if (item.textContent.includes('N/A') || item.textContent.includes('undefined')) {
+    const listGroupItem = document.querySelectorAll('.list-group-item');
+    listGroupItem.forEach((item) => {
+      if (
+        item.textContent.includes('N/A') ||
+        item.textContent.includes('undefined')
+      ) {
         item.classList.add('d-none');
       }
     });
     if (movieDetail.Ratings.length == 0) {
       const listGroupItem = document.querySelectorAll('.list-group-item');
-      listGroupItem.forEach(e => {
+      listGroupItem.forEach((e) => {
         if (e.id == 'ratings') {
           e.classList.add('d-none');
         }
@@ -29,24 +32,22 @@ document.addEventListener('click', async function (e) {
   }
 });
 
-const getMovieDetail = imdbid => {
+const getMovieDetail = (imdbid) => {
   return fetch('https://www.omdbapi.com/?apikey=9d386d0f&i=' + imdbid)
-  .then(response => response.json())
-  .then(m => m);
+    .then((response) => response.json())
+    .then((m) => m);
 };
 
 const linkToPahe = () => {
   const searchPahe = document.querySelector('.search-pahe');
-  searchPahe.addEventListener('click',
-    function() {
-      let link = 'https://pahe.ph/?s=' + this.dataset.imdbidpahe;
-      link = encodeURI(link);
-      window.open(link,
-        '_blank');
-    });
+  searchPahe.addEventListener('click', function () {
+    let link = 'https://pahe.ph/?s=' + this.dataset.imdbidpahe;
+    link = encodeURI(link);
+    window.open(link, '_blank');
+  });
 };
 
-const updateUIDetail = m => {
+const updateUIDetail = (m) => {
   const movieDetail = showMovieDetail(m);
   const modalBody = document.querySelector('.modal-body');
   const modalFooter = document.querySelector('.modal-footer');
@@ -54,20 +55,20 @@ const updateUIDetail = m => {
   modalFooter.innerHTML = showModalFooter(m);
 };
 
-const getMovies = keyword => {
+const getMovies = (keyword) => {
   return fetch('https://www.omdbapi.com/?apikey=9d386d0f&s=' + keyword)
-  .then(response => response.json())
-  .then(response => response.Search);
+    .then((response) => response.json())
+    .then((response) => response.Search);
 };
 
-const updateUI = movies => {
+const updateUI = (movies) => {
   let cards = '';
-  movies.forEach(m => cards += showCard(m));
+  movies.forEach((m) => (cards += showCard(m)));
   const movieContainer = document.querySelector('.movie-container');
   movieContainer.innerHTML = cards;
 };
 
-const showCard = m => {
+const showCard = (m) => {
   return `
   <div class="col-12 col-md-4 my-1">
   <div class="card">
@@ -81,11 +82,11 @@ const showCard = m => {
   </div>`;
 };
 
-const showMovieDetail = m => {
-  const r = m.Ratings.map(rating => {
+const showMovieDetail = (m) => {
+  const r = m.Ratings.map((rating) => {
     return `<b>${rating.Source} : </b> ${rating.Value} <br>`;
   }).join('');
-  return  `
+  return `
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
@@ -115,9 +116,9 @@ const showMovieDetail = m => {
   </div>`;
 };
 
-const showModalFooter = m => {
+const showModalFooter = (m) => {
   return `
     <button type="button" class="btn btn-primary search-pahe" data-imdbidpahe="${m.imdbID}"><i class="fas fa-search"></i> Search on Pahe</button>
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
-  `
+  `;
 };
